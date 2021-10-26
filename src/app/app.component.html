@@ -1,0 +1,37 @@
+<div class="main">
+  <h1>product list</h1>
+  <div class="dropdown">
+    <button
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton1"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      currency
+    </button>
+    <ul
+      class="dropdown-menu"
+      aria-labelledby="dropdownMenuButton1"
+      
+    >
+      <li ><a class="dropdown-item" (click)="setpricing('INR')" >INR</a></li>
+      <li ><a class="dropdown-item" (click)="setpricing('USD')">USD</a></li>
+    </ul>
+  </div>
+  <div class="cardbody">
+    <div class="card" style="width: 18rem" *ngFor="let product of productList">
+      <img
+        [src]="product.productImageUrl"
+        class="card-img-top"
+        alt="name of img"
+      />
+      <div class="card-body">
+        <h5 class="card-title">name : {{ product?.name }}</h5>
+        <p  *ngIf="selectedCurrency === 'INR'" class="card-text">price : {{ product?.price }}</p> 
+        <p *ngIf="selectedCurrency === 'USD'" class="card-text">price :
+        ${{ product?.price*conversionRate }} </p>
+      </div>
+    </div>
+  </div>
+</div>
